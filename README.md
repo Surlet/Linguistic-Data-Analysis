@@ -32,3 +32,6 @@ The cleaning process is done and the query can now be loaded in a table in a spr
 
 This dashboard gives a clear overview of every Cyrillic letter in use. The user can use the slicers to identify letters specific to certain languages and toggle between vowels and consonants.
 
+<img width="1053" height="668" alt="image" src="https://github.com/user-attachments/assets/798c1b93-52e0-4eda-a9e9-1ef0e90749c3" />
+
+
