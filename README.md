@@ -1,36 +1,64 @@
 # Geoguessr Linguistic Data Analysis
 
-This is a repository including different linguistic data analysis useful for the online game "Geoguessr". Geoguessr is a game based on Google Street View that puts the player on a random place in the world (as it is covered by Google Street View) and asks him to guess the precise location on a map. The player can use different clues to guess the right location, such as the position of the sun, the vegetation or architecture. One important clue can be the language used on official or non-official signs. As a result, being able to recognise a language is a key skill in the game. 
+Geoguessr is a game based on Google Street View that places the player on a random place in the world and asks him to guess the precise location on a map. One of the clues that helps the plyaer find the right location is the language used on signs and billboard.
 
-As a linguist, polyglot and former translator, I want to help the gamers improve their language recognition skills. And if my background gives me a lot of ressources, I also wanted to base my advice on solid linguistic data analysis. In this repository, you can find my work.
+This repository contains a series of language-based dashboards and data analysis relevant for this game.
 
-<h2>Dashboard for the Cyrillic script</h2>
-
-The first request I received was a coaching session about distinguishing languages that use the Cyrillic script. There are 8 countries covered in Geoguessr that predominently use the Cyrillic script: Serbia, North Macedonia, Bulgaria, Ukraine, Russia, Kazakhstan, Kyrgyzstan and Mongolia, each having their own official languages. These 8 languages do sometimes use distinctively unique letters, and knowing those letters is the easiest way to recognise it. 
-
-In order to learn those letters easily, I have build a dashboard that includes all 55 letters present in at least one language, with different ways to filter the overview.
-
-For every language, the alphabet table from Wikipedia was imported into Excel with PowerQuery. Each query was then cleaned, using the following steps:
-<ol type="a">
-  <li>Unnecesarry columns were removed, only these columns were kept: Letter; IPA-transcription, Common Transliteration; English Equivalent</li>
-  <li>Unnecesarry additions in the Letter column were removed</li>
-  <li>A "Language" column was added, specifying the language of the query for each letter</li>
-  <li>A Vowel or Consonant column was added, which specifies whether the letter is a vowel or a consonant, using an if-statement in the M-language. A third category, "Modifier sign" was added for the characters "ь" and "ъ"</li>
-  <li>The format of the Letter column was modified in some queries in order to have a consistent pattern in all queries: {uppercase letter}-{space}-{lowercase letter}</li>
+<h2>Table of content</h2>
+<ol type="1">
+<li><a href="https://github.com/Surlet/Linguistic-Data-Analysis/tree/main#dashboard-for-the-cyrillic-script">Cyrillic Script Dashboard</a></li>
 </ol>
 
-A Combined Alphabet query was created, merging all the individual language queries. In this query, the following steps were taken:
+<h2>Cyrillic Script Dashboard</h2>
+
+<h3>Introduction</h3>
+
+The objective of this dashboard is to give the user an overview of the 55 different Cyrillic letters and their use in the various languages.
+
+<h3>Skills used</h3>
+<ul>
+  <li>Power Query (ETL)</li>
+  <li>Data Cleaning</li>
+  <li>M language</li>
+  <li>Table</li>
+</ul>
+
+<h3>Process</h3>
+
+<h4>1. Extraction</h4>
+
+The data was retrieved from the Wikipedia pages of each language, which always contains a table with every letter used in the alphabet.
+
+<img width="853" height="509" alt="image" src="https://github.com/user-attachments/assets/dcf4957b-9438-44fd-9de5-a5d0d52f2323" />
+
+<h4>2. Transform</h4>
+
+The extracted data for each query was cleaned in order to make it consistent and comparable
+
+<ol type="a">
+  <li>Unnecesarry columns were removed, the remaining columns were appropriatly renamed and the format of the "Letter-column" was cleaned adapted where needed to make it consistent.</li>
+  <li>A "Language" column was added in each query, specifying the language of the query for each letter</li>
+  <li>A Vowel or Consonant column was added, which specifies whether the letter is a vowel or a consonant, using an if-statement in the M-language. A third category, "Modifier sign" was added for the characters "ь" and "ъ"</li>
+</ol>
+
+<img width="1379" height="120" alt="image" src="https://github.com/user-attachments/assets/f92bffae-bd81-4915-b2a7-af8ce7e7e1fa" />
+
+<h4>3. Combining the tables</h4>
+
+A Combined Alphabet query was created, merging all the individual language queries. Some additional steps were needed in this process:
 
 <ol type="a">
   <li>The query was grouped by letter</li>
   <li>A Languages column was added, concatenating (separated by a comma) all the languages that use each letter. </li>
-  <li>When a letter is used by all 8 languages, the value in the Languages column is replaced with "All languages"</li>
-  <li>The Vowel or Consonant column is also added.</li>
+  <li>When a letter is used by all 8 languages, the value in the Languages column was replaced with "All languages"</li>
+  <li>The Vowel or Consonant column was also added.</li>
 </ol>
 
-The cleaning process is done and the query can now be loaded in a table in a spreadsheet. Two slicers were created, allowing the user to filter per language (or group of languages) and/or per vowel/consonant.
+<img width="690" height="301" alt="image" src="https://github.com/user-attachments/assets/6ee559df-0f5b-43ed-a3e3-8ac4334973b2" />
 
-This dashboard gives a clear overview of every Cyrillic letter in use. The user can use the slicers to identify letters specific to certain languages and toggle between vowels and consonants.
+<h5>4. Load</h5>
+
+The data was loaded into a table. Two slicers were added to give the user the possibility to filter between languages and vowels or consonants. This dashboard gives a clear overview of every Cyrillic letter in use. 
 
 <img width="1053" height="668" alt="image" src="https://github.com/user-attachments/assets/798c1b93-52e0-4eda-a9e9-1ef0e90749c3" />
 
